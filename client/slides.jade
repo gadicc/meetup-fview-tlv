@@ -1,0 +1,104 @@
+template(name='slide1')
+  +Slide
+    +DOMElement
+      h3 Meteor-TLV ReCharge
+      h2 Famous-Views
+      img.gravatar(src='/img/gravatar.png')
+      h3 13th June, 2015
+      p These slides are available at:
+        br
+        a(href="http://meetup-fview-tlv.meteor.com/") gadi.cc/meteor-tlv
+      .footer Gadi Cohen (gadicc)
+
+template(name='slide2')
+  +Slide
+    +DOMElement
+      p
+        img(src="/img/meteor-logo.png",style="height: 50px; position: relative; top: -8px")
+        span(style="font-size: 150%; position: relative; top: -6px") +
+        img(src="/img/famous_logo.jpg",style="height: 50px")
+
+      span(style="font-size: 120%; font-weight: bold") famo.us
+      br
+      ul(style="display: inline-block; white-space: nowrap; position: relative; left: -10px")
+        li 60 fps, including on Mobile
+        li Physics engine for natural UI
+
+      h3 gadicohen:famous-views
+      i "Famous, Meteor-style"
+      br
+      ul(style="display: inline-block; white-space: nowrap; position: relative; left: -10px")
+        li Seamlessly use Famous components inside your Templates
+        li Fully reactive on attributes, supports reactive cursors
+        li Makes Meteor "play nice" with Famous (timers, computations)
+        li Lowers the barrier for putting "cool stuff" in your app
+      .footer Gadi Cohen (gadicc)
+
+template(name='slide3')
+  +Slide
+    +DOMElement
+      h3 Demo
+
+      +snippet lang="javascript"
+        | Template.body.helpers({
+        |   people: function() { return People.find(); }
+        | });
+        | 
+        | FView.wrap('DemoLayout', DemoLayout);
+        | FView.wrap('DemoNode', DemoNode);
+
+      +snippet lang="spacebars"
+        | &lt;body&gt;
+        |   {{dstache}}#Scene}}
+        |     {{dstache}}#DemoLayout}}
+        |       {{dstache}}#famousEach people}}
+        |         {{dstache}}#DemoNode}}
+        |           {{dstache}}#DOMElement}}
+        |             &lt;img src="{{dstache}}url}}"&gt;
+        |           {{dstache}}/DOMElement}}
+        |         {{dstache}}/DemoNode}}
+        |       {{dstache}}/famousEach}}
+        |     {{dstache}}#DemoLayout}}
+        |   {{dstache}}/Scene}}
+        | &lt;body&gt;
+      else
+        if currentLang 'jade'
+          | body
+          |   +Scene
+          |     +DemoLayout
+          |       +famousEach people
+          |         +DemoNode
+          |           +DOMElement
+          |             img(src="{{dstache}}url}}")
+
+      .footer Gadi Cohen (gadicc)
+
+template(name='slide4')
+  +Slide
+    +Node
+      +DOMElement class="slide4bg"
+        | 
+    +DemoLayout
+      each people
+        +DemoNode
+          +DOMElement class="person"
+            img(src="{{url}}")
+
+
+template(name='slide5')
+  +Slide
+    +DOMElement
+      h2 Links
+      h3 Slide Deck
+      a(href="http://gadi.cc/meteor-tlv") gadi.cc/meteor-tlv
+      h3 Famous
+      a(href="http://famous.org/") famous.org
+      h3 Famous-Views
+      a(href="http://github.com/gadicc/meteor-famous-views") github.com/gadicc/meteor-famous-views
+      br
+      a(href="http://fview-lab2.meteor.com/gadicc") fview-lab2.meteor.com/gadicc
+      br
+      a(href="http://forums.famous-views.org/") forums.famous-views.org
+      h3 Thanks for coming!
+
+      .footer Gadi Cohen (gadicc)
